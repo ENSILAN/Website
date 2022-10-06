@@ -1,0 +1,71 @@
+#extend("template"):
+    #export("content"):
+        <section class="p-5">
+            <div class="container">
+                <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                    <div class="col-12 col-lg-6">
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold lh-1 mb-3">ENSILAN</h2>
+                        <p class="lead">Rejoigns la compétition en jeu sur notre serveur Minecraft, et amuse toi avec nos différents mini jeux et la cité des émeraudes !</p>
+                        <p class="lead">
+                            <a href="/#play" class="btn btn-custom btn-lg px-4 gap-3">Jouer !</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="play" class="p-5 bg-dark-custom text-light">
+            <div class="container">
+                <h2 class="display-5 fw-bold lh-1 mb-3">Nos serveurs</h2>
+                <div class="row flex-lg-row align-items-center g-5 py-5">
+                    #for(server in statuses):
+                        <div class="col-lg-6">
+                            <p class="lead">
+                                #for(line in server.motd.html):
+                                    #unsafeHTML(line)<br/>
+                                #endfor
+                            </p>
+                        </div>
+                    #endfor
+                </div>
+            </div>
+        </section>
+
+        <section id="leaderboard" class="p-5">
+            <div class="container">
+                <div class="row flex-lg-row align-items-center g-5 py-5">
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold lh-1 mb-3">Classements</h2>
+                        <p class="lead">Deviens le meilleur joueur</p>
+                        <p class="lead">
+                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                #for(section in players):
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link btn-custom mb-2#if(index == 0): active#endif" id="pills-#(section.id)-tab" data-bs-toggle="pill" data-bs-target="#pills-#(section.id)" type="button" role="tab" aria-controls="pills-#(section.id)" aria-selected="true">#(section.name)</button>
+                                    </li>
+                                #endfor
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-6 leaderboard tab-content">
+                        #for(section in players):
+                            <div class="tab-pane fade#if(index == 0): show active#endif" role="tabpanel" aria-labelledby="pills-#(section.id)-tab" id="pills-#(section.id)">
+                                <h3 class="fw-bold lh-1 mb-3">#(section.name)</h3>
+                                #for(player in section.players):
+                                    <div class="player mb-2 text-light">
+                                        <span class="position">#(index + 1)</span>
+                                        <span class="name">#(player.name)</span>
+                                        <span class="score">#(player.value) #(player.label)</span>
+                                    </div>
+                                #endfor
+                            </div>
+                        #endfor
+                    </div>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend
