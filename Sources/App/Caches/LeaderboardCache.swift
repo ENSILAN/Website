@@ -10,7 +10,7 @@ import Vapor
 class LeaderboardCache {
     
     private static var lastCacheUpdate = Date().timeIntervalSince1970
-    private static var players: [HomePlayersSection]?
+    private static var players: [Leaderboard]?
     
     private static func updateCacheIfNeeded(in request: Request) async throws {
         let now = Date().timeIntervalSince1970
@@ -51,11 +51,11 @@ class LeaderboardCache {
                 .map{ $0.toLeaderboardPlayer() }
                 .filter{ $0.value > 0 }
             self.players = [
-                HomePlayersSection(id: "victories", name: "Victoires", players: players),
-                HomePlayersSection(id: "city", name: "Cité des émeraudes", players: cityPlayers),
-                HomePlayersSection(id: "replica", name: "Replica", players: replicaPlayers),
-                HomePlayersSection(id: "tntrun", name: "TNT Run", players: tntrunPlayers),
-                HomePlayersSection(id: "deacoudre", name: "Dé à coudre", players: dacPlayers)
+                Leaderboard(id: "victories", name: "Victoires", players: players),
+                Leaderboard(id: "city", name: "Cité des émeraudes", players: cityPlayers),
+                Leaderboard(id: "replica", name: "Replica", players: replicaPlayers),
+                Leaderboard(id: "tntrun", name: "TNT Run", players: tntrunPlayers),
+                Leaderboard(id: "deacoudre", name: "Dé à coudre", players: dacPlayers)
             ]
             
             // Update date
@@ -63,9 +63,17 @@ class LeaderboardCache {
         }
     }
     
-    static func getPlayers(in request: Request) async throws -> [HomePlayersSection] {
+    static func getPlayers(in request: Request) async throws -> [Leaderboard] {
         try await updateCacheIfNeeded(in: request)
         return players ?? []
     }
+    
+}
+
+struct Leaderboard: Codable {
+    
+    var id: String
+    var name: String
+    var players: [LeaderboardPlayer]
     
 }

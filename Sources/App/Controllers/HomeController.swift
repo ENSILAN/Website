@@ -18,15 +18,7 @@ class HomeController {
 struct HomeContext: Codable {
     
     var description: String
-    var players: [HomePlayersSection]
+    var players: [Leaderboard]
     var statuses: [ServerStatus]
-    
-}
-
-struct HomePlayersSection: Codable {
-    
-    var id: String
-    var name: String
-    var players: [LeaderboardPlayer]
     
 }

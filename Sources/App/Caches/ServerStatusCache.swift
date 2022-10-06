@@ -17,13 +17,15 @@ class ServerStatusCache {
         if (now - lastCacheUpdate >= 300 || statuses == nil) {
             // Get server status
             statuses = try await [
-                "minigames.ensilan.fr",
-                "city.ensilan.fr",
-                "survival.ensilan.fr"
-            ].asyncMap { ip in
+                ("Mini jeux", "minigames.ensilan.fr"),
+                ("Cité des émeraudes", "city.ensilan.fr"),
+                ("Survie", "survival.ensilan.fr")
+            ].asyncMap { name, ip in
                 let response = try await request.client
                     .get("https://api.mcsrvstat.us/2/\(ip)")
-                return try response.content.decode(ServerStatus.self)
+                var status = try response.content.decode(ServerStatus.self)
+                status.name = name
+                return status
             }
             
             // Update date

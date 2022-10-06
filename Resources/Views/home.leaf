@@ -17,20 +17,28 @@
             </div>
         </section>
         
-        <section id="play" class="p-5 bg-dark-custom text-light">
+        <section id="play" class="p-5 bg-dark-custom text-light minecraft">
             <div class="container">
                 <h2 class="display-5 fw-bold lh-1 mb-3">Nos serveurs</h2>
                 <div class="row flex-lg-row align-items-center g-5 py-5">
                     #for(server in statuses):
-                        #if(server.online):
                         <div class="col-lg-6">
+                            <p class="lead">
+                                <span>#(server.name)</span>
+                                #if(server.online):
+                                <span class="float-end"><span class="minecraft-gray">#(server.players.online)</span><span class="minecraft-dark-gray">/</span><span class="minecraft-gray">#(server.players.max)</span></span>
+                                #endif
+                            </p>
+                            #if(server.online):
                             <p class="lead">
                                 #for(line in server.motd.html):
                                     #unsafeHTML(line)<br/>
                                 #endfor
                             </p>
+                            #else:
+                            <p class="lead minecraft-dark-red">Serveur hors ligne</p>
+                            #endif
                         </div>
-                        #endif
                     #endfor
                 </div>
             </div>
