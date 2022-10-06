@@ -22,6 +22,7 @@
                 <h2 class="display-5 fw-bold lh-1 mb-3">Nos serveurs</h2>
                 <div class="row flex-lg-row align-items-center g-5 py-5">
                     #for(server in statuses):
+                        #if(server.online):
                         <div class="col-lg-6">
                             <p class="lead">
                                 #for(line in server.motd.html):
@@ -29,6 +30,7 @@
                                 #endfor
                             </p>
                         </div>
+                        #endif
                     #endfor
                 </div>
             </div>

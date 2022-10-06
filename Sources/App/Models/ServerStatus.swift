@@ -10,7 +10,7 @@ import Foundation
 struct ServerStatus: Codable {
     
     var online: Bool
-    var motd: ServerStatusMOTD
+    var motd: ServerStatusMOTD?
     
 }
 

@@ -55,7 +55,7 @@ class LeaderboardCache {
                 HomePlayersSection(id: "city", name: "Cité des émeraudes", players: cityPlayers),
                 HomePlayersSection(id: "replica", name: "Replica", players: replicaPlayers),
                 HomePlayersSection(id: "tntrun", name: "TNT Run", players: tntrunPlayers),
-                HomePlayersSection(id: "deacoudre", name: "Dé à coudre", players: tntrunPlayers)
+                HomePlayersSection(id: "deacoudre", name: "Dé à coudre", players: dacPlayers)
             ]
             
             // Update date
