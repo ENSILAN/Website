@@ -1,21 +1,14 @@
 #extend("template"):
     #export("content"):
-        <section class="p-5">
-            <div class="container">
-                <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                    <div class="col-12 col-lg-6">
-                        
-                    </div>
-                    <div class="col-lg-6">
-                        <h2 class="display-5 fw-bold lh-1 mb-3">ENSILAN</h2>
-                        <p class="lead">Rejoins la compétition en jeu sur notre serveur Minecraft, et amuse toi avec nos différents mini jeux et la cité des émeraudes !</p>
-                        <p class="lead">
-                            <a href="/#play" class="btn btn-custom btn-lg px-4 gap-3">Jouer !</a>
-                        </p>
-                    </div>
-                </div>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="col-md-5 p-lg-5 mx-auto my-5">
+                <h1 class="display-4 fw-normal">ENSILAN</h1>
+                <p class="lead fw-normal">Rejoins la compétition en jeu sur notre serveur Minecraft, et amuse toi avec nos différents mini jeux et la cité des émeraudes !</p>
+                <a href="/#play" class="btn btn-custom btn-lg px-4 gap-3">Jouer !</a>
             </div>
-        </section>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        </div>
         
         <section id="play" class="p-5 bg-dark-custom text-light minecraft">
             <div class="container">

@@ -50,6 +50,7 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a href="/" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="/city/" class="nav-link">Cité</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +64,37 @@
             <div class="container">
                 <h2 class="visually-hidden">Footer</h2>
                 <div class="row">
-                    
+                    <div class="col-12 col-md">
+                        <h3>ENSILAN</h3>
+                        <p>Serveur proposé<br/>par <a class="link-secondary" href="https://www.nathanfallet.me">Nathan Fallet</a></p>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h3>Sections</h3>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="link-secondary" href="/">Accueil</a></li>
+                            <li><a class="link-secondary" href="/city/">Cité</a></li>
+                            <li><a class="link-secondary" href="/">Mini jeux</a></li> <!-- todo -->
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h3>Liens</h3>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="link-secondary" href="https://discord.gg/pUB8brGD7z">Discord</a></li>
+                            <li><a class="link-secondary" href="https://github.com/ENSILAN">GitHub</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md"> <!-- future sections -->
+                        <h3></h3>
+                        <ul class="list-unstyled text-small">
+                            
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h3></h3>
+                        <ul class="list-unstyled text-small">
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>

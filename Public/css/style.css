@@ -16,6 +16,15 @@
   margin-bottom: 15px;
 }
 
+.flex-equal > * {
+  flex: 1;
+}
+@media (min-width: 992px) {
+  .flex-lg-equal > * {
+    flex: 1;
+  }
+}
+
 .feature-icon {
   display: inline-flex;
   align-items: center;
