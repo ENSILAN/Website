@@ -1,0 +1,87 @@
+#extend("template"):
+    #export("content"):
+        <div class="d-lg-flex flex-lg-equal w-100">
+            <div class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+                <div class="my-5 py-5 text-end">
+                    <h2 class="display-5">Mini jeux</h2>
+                    <p class="lead">Amuse toi le temps d'une partie avec quelques personnes</p>
+                </div>
+            </div>
+            <div class="minecraft text-light pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+                <div class="my-5 py-5">
+                    #for(status in statuses):
+                        <p class="lead">
+                            <span>#(status.name)</span>
+                            #if(status.online):
+                            <span class="float-end"><span class="minecraft-gray">#(status.players.online)</span><span class="minecraft-dark-gray">/</span><span class="minecraft-gray">#(status.players.max)</span></span>
+                            #endif
+                        </p>
+                        #if(status.online):
+                        <p class="lead">
+                            #for(line in status.motd.html):
+                                #unsafeHTML(line)<br/>
+                            #endfor
+                        </p>
+                        #else:
+                        <p class="lead minecraft-dark-red">Serveur hors ligne</p>
+                        #endif
+                    #endfor
+                </div>
+            </div>
+        </div>
+
+        <section id="play" class="p-5 bg-dark-custom text-light bg-dark-custom">
+            <div class="container">
+                <h2 class="display-5 fw-bold lh-1 mb-3">Nos mini jeux</h2>
+                <div class="row flex-lg-row align-items-center g-5 py-5">
+                    <div class="col-lg-6">
+                        <h3>Replica</h3>
+                        <p class="lead">Le Replica est un mini-jeu dont le but est de reproduire l'image sur le tableau face à toi le plus rapidement possible.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>TNT Run</h3>
+                        <p class="lead">Cours et évite les trous qui se forment derrière ton passage. Le dernier survivant remporte la partie !</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Dé à coudre</h3>
+                        <p class="lead">Saute dans l'eau, mais fais bien attention afin d'éviter les blocs laissés par tes concurrents.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leaderboard" class="p-5">
+            <div class="container">
+                <div class="row flex-lg-row align-items-center g-5 py-5">
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold lh-1 mb-3">Classements</h2>
+                        <p class="lead">Victoires selon les mini jeux</p>
+                        <p class="lead">
+                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                #for(section in players):
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link btn-custom mb-2#if(index == 0): active#endif" id="pills-#(section.id)-tab" data-bs-toggle="pill" data-bs-target="#pills-#(section.id)" type="button" role="tab" aria-controls="pills-#(section.id)" aria-selected="true">#(section.name)</button>
+                                    </li>
+                                #endfor
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-6 leaderboard tab-content">
+                        #for(section in players):
+                            <div class="tab-pane fade#if(index == 0): show active#endif" role="tabpanel" aria-labelledby="pills-#(section.id)-tab" id="pills-#(section.id)">
+                                <h3 class="fw-bold lh-1 mb-3">#(section.name)</h3>
+                                #for(player in section.players):
+                                    <div class="player mb-2 text-light">
+                                        <span class="position">#(index + 1)</span>
+                                        <span class="name">#(player.name)</span>
+                                        <span class="score">#(player.value) #(player.label)</span>
+                                    </div>
+                                #endfor
+                            </div>
+                        #endfor
+                    </div>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

@@ -8,7 +8,7 @@ class CityController {
             title: "Cité des émeraudes",
             description: "Le guide pour participer à la cité des émeraudes à l'ENSILAN",
             leaderboard: try await LeaderboardCache.getPlayers(in: request).first(where: { $0.name.contains("Cité") }),
-            status: try await ServerStatusCache.getStatuses(in: request).first(where: { $0.name?.contains("Cité") ?? false })
+            statuses: try await ServerStatusCache.getStatuses(in: request).filter { $0.name?.contains("Cité") ?? false }
         )
         
         return try await request.view.render("city", cityContext)
@@ -21,6 +21,6 @@ struct CityContext: Codable {
     var title: String
     var description: String
     var leaderboard: Leaderboard?
-    var status: ServerStatus?
+    var statuses: [ServerStatus]
     
 }

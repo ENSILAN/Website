@@ -9,21 +9,23 @@
             </div>
             <div class="minecraft text-light pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
                 <div class="my-5 py-5">
-                    <p class="lead">
-                        <span>#(status.name)</span>
+                    #for(status in statuses):
+                        <p class="lead">
+                            <span>#(status.name)</span>
+                            #if(status.online):
+                            <span class="float-end"><span class="minecraft-gray">#(status.players.online)</span><span class="minecraft-dark-gray">/</span><span class="minecraft-gray">#(status.players.max)</span></span>
+                            #endif
+                        </p>
                         #if(status.online):
-                        <span class="float-end"><span class="minecraft-gray">#(status.players.online)</span><span class="minecraft-dark-gray">/</span><span class="minecraft-gray">#(status.players.max)</span></span>
+                        <p class="lead">
+                            #for(line in status.motd.html):
+                                #unsafeHTML(line)<br/>
+                            #endfor
+                        </p>
+                        #else:
+                        <p class="lead minecraft-dark-red">Serveur hors ligne</p>
                         #endif
-                    </p>
-                    #if(status.online):
-                    <p class="lead">
-                        #for(line in status.motd.html):
-                            #unsafeHTML(line)<br/>
-                        #endfor
-                    </p>
-                    #else:
-                    <p class="lead minecraft-dark-red">Serveur hors ligne</p>
-                    #endif
+                    #endfor
                 </div>
             </div>
         </div>

@@ -53,9 +53,9 @@ class LeaderboardCache {
             self.players = [
                 Leaderboard(id: "victories", name: "Victoires", players: players),
                 Leaderboard(id: "city", name: "Cité des émeraudes", players: cityPlayers),
-                Leaderboard(id: "replica", name: "Replica", players: replicaPlayers),
-                Leaderboard(id: "tntrun", name: "TNT Run", players: tntrunPlayers),
-                Leaderboard(id: "deacoudre", name: "Dé à coudre", players: dacPlayers)
+                Leaderboard(id: "victories_replica", name: "Replica", players: replicaPlayers),
+                Leaderboard(id: "victories_tntrun", name: "TNT Run", players: tntrunPlayers),
+                Leaderboard(id: "victories_deacoudre", name: "Dé à coudre", players: dacPlayers)
             ]
             
             // Update date
